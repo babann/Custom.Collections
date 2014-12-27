@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Custom.Collections", "Custom.Collections\Custom.Collections.csproj", "{0F638EF4-F56A-4B37-9658-600C441A6CE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{EB3C1B9C-ACBA-4E8B-BB2B-E31302DCE238}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0F638EF4-F56A-4B37-9658-600C441A6CE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F638EF4-F56A-4B37-9658-600C441A6CE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F638EF4-F56A-4B37-9658-600C441A6CE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F638EF4-F56A-4B37-9658-600C441A6CE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB3C1B9C-ACBA-4E8B-BB2B-E31302DCE238}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB3C1B9C-ACBA-4E8B-BB2B-E31302DCE238}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB3C1B9C-ACBA-4E8B-BB2B-E31302DCE238}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB3C1B9C-ACBA-4E8B-BB2B-E31302DCE238}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Custom.Collections\Custom.Collections.csproj
+	EndGlobalSection
+EndGlobal

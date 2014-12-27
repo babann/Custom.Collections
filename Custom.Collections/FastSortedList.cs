@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Diagnostics.Contracts;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 
 namespace Custom.Collections
 {
@@ -8,6 +12,7 @@ namespace Custom.Collections
 	/// Fast sorted list implementation.
 	/// </summary>
 	[Serializable]
+	[DebuggerDisplay("{DebuggerDisplay}")]
 	public class FastSortedList<T> : ICollection<T>, IDisposable
 	{
 		#region Constants
@@ -51,6 +56,19 @@ namespace Custom.Collections
 				return _sorted [index];
 			}
 		}
+
+		/// <summary>
+		/// Gets the string to display in the debugger watches window for this instance.
+		/// </summary>
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		private string DebuggerDisplay
+		{
+			get
+			{
+				return String.Format(CultureInfo.CurrentCulture, "Sorted: {0}, Unsorted: {1}", _size, _unsorted.Count);
+			}
+		}
+
 
 		#endregion
 
@@ -209,6 +227,7 @@ namespace Custom.Collections
 		/// </summary>
 		/// <returns>Index of first found element (not necessary it is first same element in array)</returns>
 		/// <param name="item">Item to search.</param>
+		[Pure]
 		private int BinarySearch(T item)
 		{
 			if (_size == 0)
@@ -250,6 +269,7 @@ namespace Custom.Collections
 		/// <summary>
 		/// Allow to continue working with a list one sort is complete.
 		/// </summary>
+		[Pure]
 		public FastSortedList<T> OnceReady()
 		{
 			_sortDone.Wait ();
@@ -284,6 +304,7 @@ namespace Custom.Collections
 		/// Contains the specified item.
 		/// </summary>
 		/// <param name="item">Item.</param>
+		[Pure]
 		public bool Contains (T item)
 		{
 			lock (_locker) {
@@ -296,6 +317,7 @@ namespace Custom.Collections
 		/// </summary>
 		/// <param name="array">Destination array</param>
 		/// <param name="arrayIndex">Index of the items where the copyig begins</param>
+		[Pure]
 		public void CopyTo (T[] array, int arrayIndex)
 		{
 			_sorted.CopyTo (array, arrayIndex);
@@ -347,6 +369,7 @@ namespace Custom.Collections
 		/// Gets the count of sorted items.
 		/// </summary>
 		/// <value>The count of sortded.</value>
+		[Pure]
 		public int Count {
 			get {
 				return _size;
@@ -357,6 +380,8 @@ namespace Custom.Collections
 		/// Gets a value indicating whether this instance is read only.
 		/// </summary>
 		/// <value><c>true</c> if this instance is read only; otherwise, <c>false</c>.</value>
+		[Pure]
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public bool IsReadOnly {
 			get {
 				return false;
@@ -371,6 +396,7 @@ namespace Custom.Collections
 		/// GetEnumerator returns an IEnumerator over this FastSortedList
 		/// </summary>
 		/// <returns>The enumerator.</returns>
+		[Pure]
 		public IEnumerator<T> GetEnumerator ()
 		{
 			return new Enumerator (this);
@@ -384,6 +410,7 @@ namespace Custom.Collections
 		/// GetEnumerator returns an IEnumerator over this FastSortedList
 		/// </summary>
 		/// <returns>The enumerator.</returns>
+		[Pure]
 		System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator ()
 		{
 			return new Enumerator (this);

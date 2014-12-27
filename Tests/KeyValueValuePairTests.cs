@@ -22,13 +22,13 @@ namespace Tests
 			KeyValueValuePair<string, string, string> pair8 = new KeyValueValuePair<string, string, string> ("test", "test1", "test2");
 			KeyValueValuePair<string, string, string> pair9 = new KeyValueValuePair<string, string, string> ("mykey", "test1", "test2");
 
-			Assert.IsTrue (pair1.Equals(pair2));
-			Assert.IsFalse (pair2.Equals(pair3));
-			Assert.IsFalse (pair1.Equals(pair4));
-			Assert.IsFalse (pair1.Equals(pair5));
-			Assert.IsFalse (pair1.Equals(pair6));
-			Assert.IsTrue (pair7.Equals(pair8));
-			Assert.IsFalse (pair7.Equals(pair9));
+			Assert.AreEqual (pair1, pair2);
+			Assert.AreNotEqual (pair2, pair3);
+			Assert.AreNotEqual (pair1, pair4);
+			Assert.AreNotEqual (pair1, pair5);
+			Assert.AreNotEqual (pair1, pair6);
+			Assert.AreEqual (pair7, pair8);
+			Assert.AreNotEqual (pair7, pair9);
 		}
 	}
 }
